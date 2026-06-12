@@ -1,0 +1,3 @@
+Transaction Category,Transaction Amount (₹),Gender,State,Customer Latitude,Customer Longitude,City Population,Merchant Latitude,Merchant Longitude,"Day of Week (0=Mon, 6=Sun)",Month,Hour of Day,Customer Age,Distance (KM),Prediction,Fraud Probability,Alert Priority,Recommended Action,timestamp
+food_dining,1000000000000,M,WV,'-40,'-90,100000000000000000,89,56,5,3,7,45,100,✅ GENUINE TRANSACTION,0.0%,🟢 Normal,Allow transaction,2026-06-12 17:11:16.421788
+travel,100000,M,WV,'-40,'-90,100000000000000000,89,56,5,3,7,34,56,✅ GENUINE TRANSACTION,0.0%,🟢 Normal,Allow transaction,2026-06-12 17:12:01.566939
