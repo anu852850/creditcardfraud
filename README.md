@@ -1,12 +1,26 @@
 # Credit Card Fraud Detection
 
-A machine learning web application that detects fraudulent credit card transactions in real time using XGBoost with Optuna hyperparameter tuning, served via a Gradio interface.
+A machine learning web application that detects fraudulent credit card transactions in real time using XGBoost with Optuna hyperparameter tuning and an interactive Gradio interface.
 
 ---
 
 ## Demo
 
-![App Screenshot](assets/screenshot.png)
+### Application Interface
+
+![Credit Card Fraud Detection App](assets/creditcardfraud.png)
+
+### ROC-AUC Curve
+
+![ROC Curve](assets/auc%20curve.png)
+
+### Confusion Matrix
+
+![Confusion Matrix](assets/confusionmatrix.png)
+
+### Cost vs Threshold Analysis
+
+![Cost vs Threshold](assets/costvsthreshold.png)
 
 Run locally:
 
@@ -14,54 +28,47 @@ Run locally:
 python app.py
 ```
 
-Opens at `http://127.0.0.1:7862`
+The application launches at:
+
+```text
+http://127.0.0.1:7862
+```
 
 ---
 
 ## Project Overview
 
-This project builds an end-to-end fraud detection pipeline on a real-world credit card transaction dataset. It covers data cleaning, feature engineering, model comparison across multiple algorithms, hyperparameter optimization with Optuna, SHAP-based explainability, and a deployable web UI.
+This project implements an end-to-end Credit Card Fraud Detection system using machine learning and advanced feature engineering techniques. The workflow covers data preprocessing, feature engineering, handling class imbalance with SMOTE, model training, hyperparameter optimization using Optuna, model explainability using SHAP, and deployment through a Gradio web application.
 
-Multiple models were trained and evaluated — with and without SMOTE oversampling — to handle the class imbalance problem common in fraud datasets. The best performing model (XGBoost + Optuna) was selected for deployment.
+Several machine learning models were trained and compared to identify the best-performing solution. After experimentation, XGBoost with Optuna-based hyperparameter tuning achieved the best balance between precision, recall, and fraud detection capability and was selected for deployment.
 
 ---
 
 ## Features
 
-- Real-time fraud prediction from transaction inputs
-- Probability score with risk level (High / Medium / Low / Normal)
-- Recommended action per transaction
-- Multiple models trained and compared
-- SMOTE experimentation for handling class imbalance
-- Optuna-tuned XGBoost as final model
-- SHAP explainability notebook included
-- Clean Gradio UI
+* Real-time fraud prediction
+* Interactive Gradio web application
+* Fraud probability estimation
+* Risk categorization (Normal, Low, Medium, High)
+* Recommended action generation
+* Feature engineering pipeline
+* SMOTE-based imbalance handling
+* Optuna hyperparameter tuning
+* SHAP model explainability
+* Multiple model comparison and evaluation
 
 ---
 
-## Project Structure
+## Repository Structure
 
-```
-credit card fraud detection/
+```text
+credit-card-fraud-detection/
 │
 ├── assets/
-│   └── screenshot.png
-│
-├── data/
-│   ├── raw/
-│   │   └── fraud_data.csv
-│   └── processed/
-│       ├── X_train_processed.csv
-│       ├── y_train.csv
-│       └── y_test.csv
-│
-├── models/
-│   ├── xgb_optuna.pkl
-│   ├── preprocessor_v2.pkl
-│   ├── best_threshold_optuna.pkl
-│   ├── best_threshold.pkl
-│   ├── random_forest_with_smote.pkl
-│   └── random_forest_without_smote.pkl
+│   ├── creditcardfraud.png
+│   ├── auc curve.png
+│   ├── confusionmatrix.png
+│   └── costvsthreshold.png
 │
 ├── notebooks/
 │   ├── eda.ipynb
@@ -70,124 +77,115 @@ credit card fraud detection/
 │   └── shapexplanability.ipynb
 │
 ├── app.py
-└── README.md
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
----
-
-## Tech Stack
-
-| Component | Library |
-|---|---|
-| Models | XGBoost, Random Forest, Logistic Regression |
-| Hyperparameter Tuning | Optuna |
-| Class Imbalance Handling | SMOTE (imbalanced-learn) |
-| Preprocessing | Scikit-learn (ColumnTransformer) |
-| Explainability | SHAP |
-| Web UI | Gradio |
-| Data Handling | Pandas, NumPy |
-| Model Persistence | Joblib, Pickle |
+**Note:** Large datasets and trained model artifacts are excluded from the repository because they exceed GitHub's file size limits.
 
 ---
 
-## Models Trained
+## Technology Stack
 
-| Model | SMOTE | Tuning | Notes |
-|---|---|---|---|
-| Logistic Regression | Without SMOTE | Default | Baseline model |
-| Logistic Regression | With SMOTE | Default | Improved recall |
-| Random Forest | Without SMOTE | Default | Better than LR baseline |
-| Random Forest | With SMOTE | Default | Strong recall on minority class |
-| XGBoost | With SMOTE | Optuna | Final deployed model |
+| Component                   | Library/Tool                                |
+| --------------------------- | ------------------------------------------- |
+| Machine Learning            | XGBoost, Random Forest, Logistic Regression |
+| Hyperparameter Optimization | Optuna                                      |
+| Imbalanced Data Handling    | SMOTE                                       |
+| Preprocessing               | Scikit-learn                                |
+| Explainability              | SHAP                                        |
+| Web Application             | Gradio                                      |
+| Data Processing             | Pandas, NumPy                               |
+| Model Serialization         | Joblib, Pickle                              |
 
-XGBoost with Optuna tuning and a custom probability threshold gave the best balance of precision and recall and was selected for the Gradio app.
+---
+
+## Models Evaluated
+
+| Model               | SMOTE | Hyperparameter Tuning |
+| ------------------- | ----- | --------------------- |
+| Logistic Regression | No    | No                    |
+| Logistic Regression | Yes   | No                    |
+| Random Forest       | No    | No                    |
+| Random Forest       | Yes   | No                    |
+| XGBoost             | Yes   | Optuna                |
+
+The Optuna-tuned XGBoost model achieved the strongest performance and was selected for deployment.
 
 ---
 
 ## Input Features
 
-| Feature | Description |
-|---|---|
-| Transaction Category | Type of merchant (shopping, travel, etc.) |
-| Transaction Amount | Value in USD |
-| Gender | Customer gender |
-| State | US state of transaction |
-| Customer Lat/Long | Customer location coordinates |
-| City Population | Population of customer's city |
-| Merchant Lat/Long | Merchant location coordinates |
-| Day of Week | 0 = Monday, 6 = Sunday |
-| Month | 1-12 |
-| Hour of Day | 0-23 |
-| Customer Age | Age of cardholder |
-| Distance (KM) | Distance between customer and merchant |
+* Transaction Category
+* Transaction Amount
+* Gender
+* State
+* Customer Latitude
+* Customer Longitude
+* Merchant Latitude
+* Merchant Longitude
+* City Population
+* Day of Week
+* Month
+* Hour
+* Customer Age
+* Distance Between Customer and Merchant
 
-Engineered features derived automatically: `weekend`, `night`, `log_amt`, `age_group`, `amount_group`, `city_pop_group`, `distance_group`
+### Engineered Features
 
----
-
-## How It Works
-
-1. Raw transaction inputs are collected from the Gradio UI
-2. Feature engineering runs on the fly (binning, log transform, flags)
-3. The saved `preprocessor_v2.pkl` encodes categorical and scales numerical features
-4. `xgb_optuna.pkl` predicts fraud probability
-5. Probability is compared against `best_threshold_optuna.pkl` (Optuna-tuned)
-6. Result is returned with risk level and recommended action
+* weekend
+* night
+* log_amt
+* age_group
+* amount_group
+* city_pop_group
+* distance_group
 
 ---
 
-## Setup and Installation
+## Workflow
 
-```bash
-# Clone the repo
-git clone https://github.com/your-username/credit-card-fraud-detection.git
-cd credit-card-fraud-detection
-
-# Create conda environment
-conda create -n fraud_detection python=3.10
-conda activate fraud_detection
-
-# Install dependencies
-pip install gradio xgboost optuna scikit-learn imbalanced-learn pandas numpy joblib shap
-```
-
-Then run:
-
-```bash
-python app.py
-```
+1. User enters transaction details through the Gradio interface.
+2. Feature engineering is applied automatically.
+3. Data preprocessing pipeline transforms features.
+4. XGBoost predicts fraud probability.
+5. Probability is evaluated against the optimized threshold.
+6. Risk category and recommendation are generated.
+7. Results are displayed to the user.
 
 ---
 
 ## Notebooks
 
-| Notebook | Purpose |
-|---|---|
-| `eda.ipynb` | Exploratory data analysis, class imbalance check, distributions |
-| `featureengineering.ipynb` | Feature creation, preprocessing pipeline, saving preprocessor |
-| `modeltraining.ipynb` | Training all models (LR, RF, XGBoost) with and without SMOTE, Optuna tuning, threshold selection |
-| `shapexplanability.ipynb` | SHAP values, feature importance, model interpretability |
+| Notebook                 | Description                   |
+| ------------------------ | ----------------------------- |
+| eda.ipynb                | Exploratory Data Analysis     |
+| featureengineering.ipynb | Feature Engineering Pipeline  |
+| modeltraining.ipynb      | Model Training and Evaluation |
+| shapexplanability.ipynb  | SHAP-Based Explainability     |
 
 ---
 
 ## Key Design Decisions
 
-- Compared models with and without SMOTE to understand the effect of oversampling on fraud recall
-- Used `preprocessor_v2.pkl` with correct ordinal encoding for `distance_group` (`Nearby`, `Medium`, `Far`, `Very Far`)
-- Threshold saved from Optuna training — not hardcoded — ensures deployment threshold matches training
-- `log_amt` used instead of raw amount to handle skewed transaction value distribution
-- Distance between customer and merchant computed as an engineered feature to capture geographic anomalies
+* Used SMOTE to address severe class imbalance.
+* Applied Optuna for automated hyperparameter optimization.
+* Implemented threshold optimization instead of relying on the default 0.5 threshold.
+* Used logarithmic transformation for transaction amount.
+* Created geographic distance-based fraud indicators.
+* Included explainability through SHAP values.
 
 ---
 
 ## Author
 
-Anmakshi
-B.Tech — G.B. Pant Institute of Engineering and Technology
-Internship Project | 2025-2026
+**Anmakshi**
+B.Tech – G.B. Pant Institute of Engineering and Technology
+Internship Project (2025–2026)
 
 ---
 
 ## License
 
-This project is for academic and portfolio purposes.
+This project is intended for educational, research, and portfolio purposes.
