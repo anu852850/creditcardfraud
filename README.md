@@ -26,6 +26,9 @@ Run locally:
 
 ```bash
 python app.py
+```
+
+---
 
 ## Project Overview
 
@@ -37,16 +40,16 @@ Several machine learning models were trained and compared to identify the best-p
 
 ## Features
 
-* Real-time fraud prediction
-* Interactive Gradio web application
-* Fraud probability estimation
-* Risk categorization (Normal, Low, Medium, High)
-* Recommended action generation
-* Feature engineering pipeline
-* SMOTE-based imbalance handling
-* Optuna hyperparameter tuning
-* SHAP model explainability
-* Multiple model comparison and evaluation
+- Real-time fraud prediction
+- Interactive Gradio web application
+- Fraud probability estimation
+- Risk categorization (Normal, Low, Medium, High)
+- Recommended action generation
+- Feature engineering pipeline
+- SMOTE-based imbalance handling
+- Optuna hyperparameter tuning
+- SHAP model explainability
+- Multiple model comparison and evaluation
 
 ---
 
@@ -73,34 +76,34 @@ credit-card-fraud-detection/
 └── .gitignore
 ```
 
-**Note:** Large datasets and trained model artifacts are excluded from the repository because they exceed GitHub's file size limits.
+> **Note:** Large datasets and trained model artifacts are excluded from the repository because they exceed GitHub's file size limits.
 
 ---
 
 ## Technology Stack
 
-| Component                   | Library/Tool                                |
-| --------------------------- | ------------------------------------------- |
-| Machine Learning            | XGBoost, Random Forest, Logistic Regression |
-| Hyperparameter Optimization | Optuna                                      |
-| Imbalanced Data Handling    | SMOTE                                       |
-| Preprocessing               | Scikit-learn                                |
-| Explainability              | SHAP                                        |
-| Web Application             | Gradio                                      |
-| Data Processing             | Pandas, NumPy                               |
-| Model Serialization         | Joblib, Pickle                              |
+| Component | Library / Tool |
+|---|---|
+| Machine Learning | XGBoost, Random Forest, Logistic Regression |
+| Hyperparameter Optimization | Optuna |
+| Imbalanced Data Handling | SMOTE |
+| Preprocessing | Scikit-learn |
+| Explainability | SHAP |
+| Web Application | Gradio |
+| Data Processing | Pandas, NumPy |
+| Model Serialization | Joblib, Pickle |
 
 ---
 
 ## Models Evaluated
 
-| Model               | SMOTE | Hyperparameter Tuning |
-| ------------------- | ----- | --------------------- |
-| Logistic Regression | No    | No                    |
-| Logistic Regression | Yes   | No                    |
-| Random Forest       | No    | No                    |
-| Random Forest       | Yes   | No                    |
-| XGBoost             | Yes   | Optuna                |
+| Model | SMOTE | Hyperparameter Tuning |
+|---|---|---|
+| Logistic Regression | No | No |
+| Logistic Regression | Yes | No |
+| Random Forest | No | No |
+| Random Forest | Yes | No |
+| XGBoost | Yes | Optuna |
 
 The Optuna-tuned XGBoost model achieved the strongest performance and was selected for deployment.
 
@@ -108,30 +111,30 @@ The Optuna-tuned XGBoost model achieved the strongest performance and was select
 
 ## Input Features
 
-* Transaction Category
-* Transaction Amount
-* Gender
-* State
-* Customer Latitude
-* Customer Longitude
-* Merchant Latitude
-* Merchant Longitude
-* City Population
-* Day of Week
-* Month
-* Hour
-* Customer Age
-* Distance Between Customer and Merchant
+- Transaction Category
+- Transaction Amount
+- Gender
+- State
+- Customer Latitude
+- Customer Longitude
+- Merchant Latitude
+- Merchant Longitude
+- City Population
+- Day of Week
+- Month
+- Hour
+- Customer Age
+- Distance Between Customer and Merchant
 
 ### Engineered Features
 
-* weekend
-* night
-* log_amt
-* age_group
-* amount_group
-* city_pop_group
-* distance_group
+- `weekend`
+- `night`
+- `log_amt`
+- `age_group`
+- `amount_group`
+- `city_pop_group`
+- `distance_group`
 
 ---
 
@@ -149,30 +152,30 @@ The Optuna-tuned XGBoost model achieved the strongest performance and was select
 
 ## Notebooks
 
-| Notebook                 | Description                   |
-| ------------------------ | ----------------------------- |
-| eda.ipynb                | Exploratory Data Analysis     |
-| featureengineering.ipynb | Feature Engineering Pipeline  |
-| modeltraining.ipynb      | Model Training and Evaluation |
-| shapexplanability.ipynb  | SHAP-Based Explainability     |
+| Notebook | Description |
+|---|---|
+| `eda.ipynb` | Exploratory Data Analysis |
+| `featureengineering.ipynb` | Feature Engineering Pipeline |
+| `modeltraining.ipynb` | Model Training and Evaluation |
+| `shapexplanability.ipynb` | SHAP-Based Explainability |
 
 ---
 
 ## Key Design Decisions
 
-* Used SMOTE to address severe class imbalance.
-* Applied Optuna for automated hyperparameter optimization.
-* Implemented threshold optimization instead of relying on the default 0.5 threshold.
-* Used logarithmic transformation for transaction amount.
-* Created geographic distance-based fraud indicators.
-* Included explainability through SHAP values.
+- Used SMOTE to address severe class imbalance.
+- Applied Optuna for automated hyperparameter optimization.
+- Implemented threshold optimization instead of relying on the default 0.5 threshold.
+- Used logarithmic transformation for transaction amount.
+- Created geographic distance-based fraud indicators.
+- Included explainability through SHAP values.
 
 ---
 
 ## Author
 
-**Anmakshi**
-B.Tech – G.B. Pant Institute of Engineering and Technology
+**Anmakshi**  
+B.Tech – G.B. Pant Institute of Engineering and Technology  
 Internship Project (2025–2026)
 
 ---
