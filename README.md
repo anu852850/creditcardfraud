@@ -8,11 +8,11 @@ A machine learning web application that detects fraudulent credit card transacti
 
 ### Application Interface
 
-![Credit Card Fraud Detection App](assets/creditcardfraud.png)
+![Application Interface](assets/creditcardfraud.png)
 
 ### ROC-AUC Curve
 
-![ROC Curve](assets/auc%20curve.png)
+![ROC-AUC Curve](assets/auc%20curve.png)
 
 ### Confusion Matrix
 
@@ -26,15 +26,6 @@ Run locally:
 
 ```bash
 python app.py
-```
-
-The application launches at:
-
-```text
-http://127.0.0.1:7862
-```
-
----
 
 ## Project Overview
 
