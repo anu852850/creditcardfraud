@@ -8,19 +8,19 @@ A machine learning web application that detects fraudulent credit card transacti
 
 ### Application Interface
 
-![Application Interface](assets/creditcardfraud.png)
+![Application Interface](assets/creditcardfraud.jpeg)
 
 ### ROC-AUC Curve
 
-![ROC-AUC Curve](assets/auc%20curve.png)
+![ROC-AUC Curve](assets/auc%20curve.jpeg)
 
 ### Confusion Matrix
 
-![Confusion Matrix](assets/confusionmatrix.png)
+![Confusion Matrix](assets/confusionmatrix.jpeg)
 
 ### Cost vs Threshold Analysis
 
-![Cost vs Threshold](assets/costvsthreshold.png)
+![Cost vs Threshold](assets/costvsthreshold.jpeg)
 
 Run locally:
 
@@ -59,10 +59,10 @@ Several machine learning models were trained and compared to identify the best-p
 credit-card-fraud-detection/
 │
 ├── assets/
-│   ├── creditcardfraud.png
+│   ├── creditcardfraud.jpeg
 │   ├── auc curve.png
-│   ├── confusionmatrix.png
-│   └── costvsthreshold.png
+│   ├── confusionmatrix.jpeg
+│   └── costvsthreshold.jpeg
 │
 ├── notebooks/
 │   ├── eda.ipynb
